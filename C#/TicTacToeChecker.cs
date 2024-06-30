@@ -1,5 +1,154 @@
 using System;
 
+// final code
+public class TicTacToe
+{
+    public int IsSolved(int[,] board)
+    {
+        int count_empty = 0;
+        int count_1 = 0;
+        int count_2 = 0;
+        int row = 0;
+        int column = 0;
+        
+        // check rows
+        for (row = 0; row < board.GetLength(0); row++) {
+            count_1 = 0;
+            count_2 = 0;
+            for (column = 0; column < board.GetLength(1); column++) {
+                if (board[row, column] == 1) {
+                    count_1++;
+                } else {
+                    count_1 = 0;
+                }
+
+                if (board[row, column] == 2) {
+                    count_2++;
+                } else {
+                    count_2 = 0;
+                }
+
+                if (board[row,column] == 0) {
+                    count_empty++;
+                } else {
+                    count_empty = 0;
+                }
+
+                if (count_1 == 3) {
+                    return 1;
+                } else if (count_2 == 3) {
+                    return 2;
+                }
+            }
+        }
+
+        // check columns
+        for (column = 0; column < board.GetLength(1); column++) {
+            count_1 = 0;
+            count_2 = 0;
+            for (row = 0; row < board.GetLength(0); row++) {
+                if (board[row, column] == 1) {
+                    count_1++;
+                } else {
+                    count_1 = 0;
+                }
+
+                if (board[row, column] == 2) {
+                    count_2++;
+                } else {
+                    count_2 = 0;
+                }
+
+                if (board[row,column] == 0) {
+                    count_empty++;
+                } else {
+                    count_empty = 0;
+                }
+
+                if (count_1 == 3) {
+                    return 1;
+                } else if (count_2 == 3) {
+                    return 2;
+                }
+            }
+        }
+
+        // check diagonal (top left -> bottom right)
+        count_1 = 0;
+        count_2 = 0;
+        count_empty = 0;
+        for (int i = 0; i < board.GetLength(0); i++) {
+            if (board[i, i] == 1) {
+                count_1++;
+            } else {
+                count_1 = 0;
+            }
+
+            if (board[i, i] == 2) {
+                count_2++;
+            } else {
+                count_2 = 0;
+            }
+
+            if (board[i,i] == 0) {
+                count_empty++;
+            } else {
+                count_empty = 0;
+            }
+
+            if (count_1 == 3) {
+                return 1;
+            } else if (count_2 == 3) {
+                return 2;
+            }
+        }
+
+        // check diagonal (top right -> bottom left)
+        count_1 = 0;
+        count_2 = 0;
+        count_empty = 0;
+        int d_columns = board.GetLength(1);
+        for (int j = 0; j < board.GetLength(0); j++) {
+            if (board[j, d_columns-1-j] == 1) {
+                count_1++;
+            } else {
+                count_1 = 0;
+            }
+
+            if (board[j, d_columns-1-j] == 2) {
+                count_2++;
+            } else {
+                count_2 = 0;
+            }
+
+            if (board[j, d_columns-1-j] == 0) {
+                count_empty++;
+            } else {
+                count_empty = 0;
+            }
+
+            if (count_1 == 3) {
+                return 1;
+            } else if (count_2 == 3) {
+                return 2;
+            }
+        }
+
+        // check for empty cells
+        for (row = 0; row < board.GetLength(0); row++) {
+            for (column = 0; column < board.GetLength(1); column++) {
+                if (board[row, column] == 0) {
+                    return -1;
+                }
+            }
+        }
+      
+        return 0;
+    }
+}
+
+
+
 
 
 // the sketch
