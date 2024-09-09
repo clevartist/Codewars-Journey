@@ -1,12 +1,13 @@
-// MY TRADITIONAL APPROACH
-// WHICH CODEWARS DOESN'T ACCEPT FOR SOME REASON
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
 
 bool alphanumeric(const char* strin) {
+    if(*strin == '\0'){
+        return false;
+    }
+    
     char* allowed_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     int allowed_ints[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
